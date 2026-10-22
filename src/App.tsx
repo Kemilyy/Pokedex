@@ -4,6 +4,7 @@ import type { PokedexData } from './types/pokemon'
 import {useState} from 'react'
 import SearchBar from './components/searchBar/SearchBar'
 
+
 const dados: PokedexData = dadosJson as PokedexData
 
 function App() {
