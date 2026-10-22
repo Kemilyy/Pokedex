@@ -1,0 +1,20 @@
+.stat {
+    display: grid;
+    grid-template-columns: 90px 1fr 40px;
+    gap: 8px;
+    align-items: center;
+    margin: 8px 0;
+}
+
+.stat-bar {
+    background: #ddd;
+    border-radius: 8px;
+    height: 10px;
+    overflow: hidden;
+}
+
+.stat-fill {
+    background: #4caf50;
+    height: 100%;
+    transition: width .4s;
+}

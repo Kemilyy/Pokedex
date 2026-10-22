@@ -1,15 +1,21 @@
-import type {Pokemon} from '../../types/pokemon'
+import './PokemonList.css'
+import type { Pokemon } from '../../types/pokemon'
 import PokemonCard from '../pokemonCard/PokemonCard'
 
-interface PokemonListProps{
+interface PokemonListProps {
     pokemons: Pokemon[]
+    onSelect: (id: number) => void 
 }
 
-function PokemonList({pokemons}: PokemonListProps){
-    return(
+function PokemonList({ pokemons, onSelect }: PokemonListProps) {
+    return (
         <div className="pokemon-list">
             {pokemons.map((pokemon) => (
-                <PokemonCard key={pokemon.id} pokemon={pokemon} />
+                <PokemonCard
+                    key={pokemon.id}
+                    pokemon={pokemon}
+                    onSelect={onSelect}   
+                />
             ))}
         </div>
     )

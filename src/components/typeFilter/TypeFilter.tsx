@@ -23,4 +23,5 @@ function TypeFilter({ types, value, onChange }: TypeFilterProps) {
     )
 }
 
+
 export default TypeFilter

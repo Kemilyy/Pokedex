@@ -31,3 +31,5 @@ export interface PokedexData {
     pokemon: Pokemon[]
     trainers: Trainer[]
 }
+
+export type StatKey = keyof Pokemon['stats']
