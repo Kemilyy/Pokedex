@@ -1,0 +1,177 @@
+
+.trainers-page {
+  color: var(--text);
+  animation: trainers-appear 350ms ease both;
+}
+
+.trainers-heading {
+  margin-bottom: 32px;
+}
+
+.trainers-eyebrow {
+  color: var(--yellow);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.trainers-heading h1 {
+  margin: 12px 0;
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: -0.06em;
+}
+
+.trainers-heading p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.trainers-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.trainer-card {
+  min-width: 0;
+  padding: 22px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface);
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease;
+}
+
+.trainer-card:hover {
+  transform: translateY(-4px);
+  border-color: #5a5028;
+  background: var(--surface-hover);
+}
+
+.trainer-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.trainer-number {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.trainer-badges {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--yellow);
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.trainer-card h2 {
+  margin: 22px 0 6px;
+  overflow-wrap: anywhere;
+  color: var(--text);
+  font-size: 23px;
+  font-weight: 750;
+  letter-spacing: -0.7px;
+}
+
+.trainer-pokemon-count {
+  margin: 0 0 20px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.trainer-pokemon-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.trainer-pokemon {
+  min-width: 0;
+  padding: 8px 4px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #0b0e10;
+  text-align: center;
+}
+
+.trainer-pokemon img {
+  display: block;
+  width: 100%;
+  max-width: 88px;
+  aspect-ratio: 1;
+  margin: 0 auto 4px;
+  object-fit: contain;
+  transition: transform 180ms ease;
+}
+
+.trainer-pokemon:hover img {
+  transform: scale(1.08);
+}
+
+.trainer-pokemon span {
+  display: block;
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 10px;
+  text-overflow: ellipsis;
+  text-transform: capitalize;
+  white-space: nowrap;
+}
+
+@keyframes trainers-appear {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 950px) {
+  .trainers-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+}
+
+@media (max-width: 520px) {
+  .trainers-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .trainer-card {
+    padding: 18px;
+  }
+
+  .trainer-card h2 {
+    font-size: 21px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trainers-page {
+    animation: none;
+  }
+
+  .trainer-card,
+  .trainer-pokemon img {
+    transition: none;
+  }
+}
