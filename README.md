@@ -6,8 +6,8 @@ Pokédex interativa desenvolvida com **React + Vite + TypeScript** para a Ativid
 
 | Nome | GitHub |
 |---|---|
-| Kemily Eduardo da Luz | [@seu-usuario](https://github.com/seu-usuario) |
-| [Nome da dupla] | [@usuario-da-dupla](https://github.com/usuario-da-dupla) |
+| Kemily Eduardo da Luz | [@kemilyy](https://github.com/kemilyy) |
+| [Letícia Xavier Abreu] | [@xabreuleticia](https://github.com/xabreuleticia) |
 
 ## Pré-visualização
 
