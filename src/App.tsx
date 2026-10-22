@@ -1,11 +1,14 @@
-import dados from './data/pokedex-data.json'
+import dadosJson from './data/pokedex-data.json'
+import PokemonList from './components/pokemonList/PokemonList'
+import type { PokedexData } from './types/pokemon'
+
+const dados: PokedexData = dadosJson as PokedexData
 
 function App() {
-  console.log(dados)
-
   return (
     <div>
       <h1>Pokédex</h1>
+      <PokemonList pokemons={dados.pokemon} />
     </div>
   )
 }
