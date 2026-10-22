@@ -5,6 +5,7 @@ import { useState } from 'react'
 import SearchBar from './components/searchBar/SearchBar'
 import TypeFilter from './components/typeFilter/TypeFilter'
 
+
 const dados: PokedexData = dadosJson as PokedexData
 
 function App() {
