@@ -1,0 +1,73 @@
+
+.favorites-page {
+  color: var(--text);
+  animation: favorites-appear 350ms ease both;
+}
+
+.favorites-heading {
+  margin-bottom: 32px;
+}
+
+.favorites-eyebrow {
+  color: var(--yellow);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.favorites-heading h1 {
+  margin: 12px 0;
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: -0.06em;
+}
+
+.favorites-heading p,
+.favorites-empty p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.favorites-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 280px;
+  padding: 32px;
+  border: 1px dashed var(--border);
+  border-radius: 16px;
+  text-align: center;
+}
+
+.favorites-empty-icon {
+  color: var(--yellow);
+  font-size: 48px;
+}
+
+.favorites-empty h2 {
+  margin: 16px 0 4px;
+  font-size: 20px;
+}
+
+.favorites-empty p {
+  max-width: 360px;
+  line-height: 1.6;
+}
+
+@keyframes favorites-appear {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .favorites-page {
+    animation: none;
+  }
+}

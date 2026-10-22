@@ -6,11 +6,12 @@ import SearchBar from './components/searchBar/SearchBar'
 import TypeFilter from './components/typeFilter/TypeFilter'
 import Header from './components/header/Header'
 import Trainers from './components/trainers/Trainers'
+import Favorites from './components/favorites/Favorites'
 import './App.css'
 
 import type { PokedexData } from './types/pokemon'
 import { TYPELESS } from './constants/pokedex'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const dados: PokedexData = dadosJson as PokedexData
 
@@ -31,6 +32,15 @@ function App() {
   const [idSelecionado, setIdSelecionado] = useState<number | null>(null)
   const [paginaAtiva, setPaginaAtiva] = useState('pokedex')
 
+  const [favoritos, setFavoritos] = useState<number[]>(() => {
+    try {
+      const salvos = localStorage.getItem('pokemon-favoritos')
+      return salvos ? (JSON.parse(salvos) as number[]) : []
+    } catch {
+      return []
+    }
+  })
+
   const textoBusca = busca.trim().toLowerCase()
 
   const pokemonsFiltrados = dados.pokemon.filter((item) => {
@@ -47,7 +57,26 @@ function App() {
   })
 
   const pokemonSelecionado = dados.pokemon.find(
-    (p) => p.id === idSelecionado
+    (pokemon) => pokemon.id === idSelecionado
+  )
+
+  function alternarFavorito(id: number) {
+    setFavoritos((atuais) => 
+      atuais.includes(id)
+        ? atuais.filter((favId) => favId !== id)
+        : [...atuais, id]
+    )
+  }
+
+  useEffect(() => {
+    localStorage.setItem(
+      'pokemon-favoritos',
+      JSON.stringify(favoritos)
+    )
+  }, [favoritos])
+
+  const pokemonsFavoritos = dados.pokemon.filter((pokemon) =>
+    favoritos.includes(pokemon.id)
   )
 
   return (
@@ -62,6 +91,13 @@ function App() {
           <Trainers
             trainers={treinadores}
             pokemons={dados.pokemon}
+          />
+        ) : paginaAtiva === 'favoritos' ? (
+          <Favorites
+            pokemons={pokemonsFavoritos}
+            onSelect={setIdSelecionado}
+            favoritos={favoritos}
+            onToggleFavorite={alternarFavorito}
           />
         ) : (
           <>
@@ -86,6 +122,8 @@ function App() {
               <PokemonList
                 pokemons={pokemonsFiltrados}
                 onSelect={setIdSelecionado}
+                favoritos={favoritos}
+                onToggleFavorite={alternarFavorito}
               />
             )}
 
