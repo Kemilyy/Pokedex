@@ -1,8 +1,11 @@
+
 import dadosJson from './data/pokedex-data.json'
 import PokemonList from './components/pokemonList/PokemonList'
 import PokemonDetails from './components/pokemonDetails/PokemonDetails'
 import SearchBar from './components/searchBar/SearchBar'
 import TypeFilter from './components/typeFilter/TypeFilter'
+import './App.css'
+import Header from './components/header/Header'
 import type { PokedexData } from './types/pokemon'
 import { TYPELESS } from './constants/pokedex'
 import { useState } from 'react'
@@ -17,40 +20,62 @@ function App() {
   const textoBusca = busca.trim().toLowerCase()
 
   const pokemonsFiltrados = dados.pokemon.filter((item) => {
-    const passaNaBusca = item.name.toLowerCase().includes(textoBusca) ||
+    const passaNaBusca =
+      item.name.toLowerCase().includes(textoBusca) ||
       String(item.id).includes(textoBusca)
-    const passaNoTipo = tipoSelecionado === '' ||
+
+    const passaNoTipo =
+      tipoSelecionado === '' ||
       (tipoSelecionado === TYPELESS && item.types.length === 0) ||
       item.types.some((t) => t.name === tipoSelecionado)
 
     return passaNaBusca && passaNoTipo
   })
 
-  const pokemonSelecionado = dados.pokemon.find((p) => p.id === idSelecionado)
+  const pokemonSelecionado = dados.pokemon.find(
+    (p) => p.id === idSelecionado
+  )
 
   return (
-    <div>
-      <h1>Pokédex</h1>
-      <SearchBar value={busca} onChange={setBusca} />
-      <TypeFilter
-        types={dados.types}
-        value={tipoSelecionado}
-        onChange={setTipoSelecionado}
+    <>
+      <Header
+        paginaAtiva="pokedex"
+        onMudarPagina={() => {}}
       />
 
-      {pokemonsFiltrados.length === 0 ? (
-        <p className="no-results">Nenhum Pokémon encontrado.</p>
-      ) : (
-        <PokemonList pokemons={pokemonsFiltrados} onSelect={setIdSelecionado} />
-      )}
+      <main className="app">
+        <h1>Pokédex</h1>
 
-      {pokemonSelecionado && (
-        <PokemonDetails
-          pokemon={pokemonSelecionado}
-          onClose={() => setIdSelecionado(null)}
+        <SearchBar
+          value={busca}
+          onChange={setBusca}
         />
-      )}
-    </div>
+
+        <TypeFilter
+          types={dados.types}
+          value={tipoSelecionado}
+          onChange={setTipoSelecionado}
+        />
+
+        {pokemonsFiltrados.length === 0 ? (
+          <p className="no-results">
+            Nenhum Pokémon encontrado.
+          </p>
+        ) : (
+          <PokemonList
+            pokemons={pokemonsFiltrados}
+            onSelect={setIdSelecionado}
+          />
+        )}
+
+        {pokemonSelecionado && (
+          <PokemonDetails
+            pokemon={pokemonSelecionado}
+            onClose={() => setIdSelecionado(null)}
+          />
+        )}
+      </main>
+    </>
   )
 }
 

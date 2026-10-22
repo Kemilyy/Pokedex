@@ -1,3 +1,5 @@
+import './SearchBar.css'
+
 interface SearchBarProps {
     value: string
     onChange: (texto: string) => void

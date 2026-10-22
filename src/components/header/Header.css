@@ -1,0 +1,149 @@
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  min-height: 72px;
+  padding: 0 clamp(20px, 5vw, 76px);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+
+  background: rgba(8, 10, 11, 0.94);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(16px);
+}
+
+.header-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  color: var(--text);
+  text-decoration: none;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  white-space: nowrap;
+  transition: opacity 180ms ease;
+}
+
+.header-logo:hover {
+  opacity: 0.8;
+}
+
+.logo-symbol {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 30px;
+  height: 30px;
+  border: 2px solid var(--yellow);
+  border-radius: 50%;
+
+  color: var(--yellow);
+  font-size: 21px;
+  line-height: 1;
+}
+
+.header-nav {
+  display: flex;
+  align-items: stretch;
+  align-self: stretch;
+  gap: clamp(12px, 2.5vw, 32px);
+}
+
+.header-link {
+  position: relative;
+  padding: 0 4px;
+
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+
+  transition:
+    color 180ms ease,
+    border-color 180ms ease;
+}
+
+.header-link:hover,
+.header-link.active {
+  color: var(--yellow);
+}
+
+.header-link.active {
+  border-bottom-color: var(--yellow);
+}
+
+.header-link:focus-visible,
+.header-logo:focus-visible {
+  outline: 2px solid var(--yellow);
+  outline-offset: 5px;
+  border-radius: 4px;
+}
+
+.header-region {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.8px;
+  white-space: nowrap;
+}
+
+@media (max-width: 700px) {
+  .header {
+    min-height: auto;
+    padding: 14px 18px 0;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .header-logo {
+    font-size: 20px;
+  }
+
+  .logo-symbol {
+    width: 27px;
+    height: 27px;
+    font-size: 19px;
+  }
+
+  .header-region {
+    margin-left: auto;
+    font-size: 9px;
+    letter-spacing: 1.2px;
+  }
+
+  .header-nav {
+    order: 3;
+    width: 100%;
+    min-height: 44px;
+    gap: 22px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .header-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .header-link {
+    flex-shrink: 0;
+    font-size: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header-logo,
+  .header-link {
+    transition: none;
+  }
+}

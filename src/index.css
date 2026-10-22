@@ -1,31 +1,36 @@
-:root {
-  font-family: Inter, Arial, sans-serif;
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  font-family: 'Inter', sans-serif;
   color: #f4f5f7;
   background: #080a0b;
 
-  --color-bg: #080a0b;
-  --color-surface: #111519;
-  --color-surface-hover: #171d22;
-  --color-border: #20262d;
-  --color-primary: #ffc400;
-  --color-text: #f4f5f7;
-  --color-muted: #89919d;
-
-  --radius-card: 16px;
-  --radius-control: 10px;
+  --bg: #080a0b;
+  --surface: #111519;
+  --surface-hover: #191f24;
+  --border: #272d33;
+  --yellow: #ffc400;
+  --text: #f4f5f7;
+  --muted: #929ba6;
 }
 
 * {
   box-sizing: border-box;
 }
 
+html {
+  min-width: 320px;
+  min-height: 100%;
+  background: var(--bg);
+}
+
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background: var(--color-bg);
-  color: var(--color-text);
+  background: var(--bg);
+  color: var(--text);
 }
 
 button,
@@ -38,6 +43,11 @@ button {
   cursor: pointer;
 }
 
-img {
-  max-width: 100%;
+#root {
+  min-height: 100vh;
+}
+
+::selection {
+  background: var(--yellow);
+  color: #080a0b;
 }

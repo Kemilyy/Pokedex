@@ -1,4 +1,5 @@
 import type { PokemonType } from '../../types/pokemon'
+import './TypeFilter.css'
 
 interface TypeFilterProps {
     types: PokemonType[]
